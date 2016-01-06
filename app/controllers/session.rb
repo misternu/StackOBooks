@@ -8,7 +8,7 @@ post '/login' do
     session[:user_id] = @user.id
     redirect :"/users/#{@user.id}"
   else
-    redirect :'/login'
+    redirect :'/'
   end
 end
 
