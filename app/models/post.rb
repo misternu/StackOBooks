@@ -1,3 +1,3 @@
 class Post < ActiveRecord::Base
-  # Remember to create a migration!
+  has_many :responses, as: :comment
 end
