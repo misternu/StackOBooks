@@ -9,16 +9,16 @@ end
            body: Faker::Lorem.sentences(4) + Faker::Hipster.sentence )
 end
 
-20.times do
-  Response.new( user_id: rand(1..50),
-                body: Faker::Lorem.sentences(2) + Faker::Hipster.sentence,
-                comment_id: rand(1..20),
-                comment_type: "Post" )
-end
+# 20.times do
+#   Response.new( user_id: rand(1..50),
+#                 body: Faker::Lorem.sentences(2) + Faker::Hipster.sentence,
+#                 comment_id: rand(1..20),
+#                 comment_type: "Post" )
+# end
 
-30.times do
-    Response.new( user_id: rand(1..50),
-                body: Faker::Lorem.sentences(2) + Faker::Hipster.sentence,
-                comment_id: rand(1..20),
-                comment_type: "Response" )
-end
+# 30.times do
+#     Response.new( user_id: rand(1..50),
+#                 body: Faker::Lorem.sentences(2) + Faker::Hipster.sentence,
+#                 comment_id: rand(1..20),
+#                 comment_type: "Response" )
+# end

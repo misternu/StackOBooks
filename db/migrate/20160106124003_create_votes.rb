@@ -1,9 +1,10 @@
 class CreateVotes < ActiveRecord::Migration
   def change
-    create_table :users do |t|
-      t.reference :user
-      t.reference :response
+    create_table :votes do |t|
+      t.references :user
+      t.references :response
 
       t.timestamps
+    end
   end
 end
