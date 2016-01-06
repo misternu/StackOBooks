@@ -7,5 +7,5 @@ get '/posts' do
     @user = current_user.id
   end
   @posts = Post.all
-  erb :index
+  erb :'/posts/index'
 end

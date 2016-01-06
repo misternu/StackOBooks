@@ -1,12 +1,12 @@
-get 'login' do
+get '/login' do
   erb :'/login'
 end
 
-get 'login/new' do
-  @user = User.find_by(email: params[:email])
+post '/login' do
+  @user = User.find_by(username: params[:username])
   if @user && @user.authenticate(params[:password])
-    session[:user_id] = @user.user_id
-    redirect :'/users/#{@user.id}'
+    session[:user_id] = @user.id
+    redirect :"/users/#{@user.id}"
   else
     redirect :'/login'
   end
