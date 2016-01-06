@@ -1,8 +1,8 @@
 class CreateTaggings < ActiveRecord::Migration
   def change
-    create_table :users do |t|
-      t.reference :user
-      t.reference :tag
+    create_table :taggings do |t|
+      t.references :user
+      t.references :tag
 
       t.timestamps
     end
