@@ -1,4 +1,10 @@
+
 textarea {
   width: 400px;
   height: 150px;
+}
+
+.vote-img {
+  width: 60px;
+  height: auto;
 }

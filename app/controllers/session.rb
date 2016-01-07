@@ -16,3 +16,7 @@ get '/logout' do
   session.delete(:user_id)
   redirect '/'
 end
+
+get '/session' do
+  session.inspect
+end
