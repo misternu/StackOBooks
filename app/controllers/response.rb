@@ -29,3 +29,13 @@ post '/responses/:response_id/responses' do
     erb :'responses/new'
   end
 end
+
+post '/responses/:id/favorite/new' do
+  fave = Favorite.new(response_id: params[:response_id], post_id: params[:post_id])
+  if fave.save
+    "success"
+  else
+    "fail"
+  end
+
+end

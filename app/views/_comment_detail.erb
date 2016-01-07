@@ -1,7 +1,13 @@
 <ul>
-  <li class="response-body" id="<%= response.id %>"><%= response.body %>
+  <li class="response-body" id="<%= response.id %>">
+    <% if response.favorite %>
+      <img src="/imgs/check.png" class="check-img">
+    <% else %>
+      <img src="/imgs/gray_check.png" class="check-img">
+    <% end %>
+    <%= response.body %>
   <div class="response-info">
-    <p> <img src="/imgs/grn_arrow.png" class="vote-img"><span class="response-vote"><%= response.votes.count %></span> <span class="response-author"><%= response.user.username %></span> <span class="response-date"><%= response.updated_at %></span></p>
+    <p><img src="/imgs/grn_arrow.png" class="vote-img">Votes: <span class="response-vote"><%= response.votes.count %></span> | Author: <span class="response-author"><%= response.user.username %></span> | Posted on: <span class="response-date"><%= response.updated_at.strftime('%B %e, %Y') %></span></p>
   </div>
 
   <% if response.responses.length > 0 %>

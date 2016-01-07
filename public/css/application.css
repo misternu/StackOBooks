@@ -4,6 +4,13 @@ textarea {
   height: 150px;
 }
 
+.check-img {
+  width:20px;
+  height:auto;
+  margin-right: 5px;
+  vertical-align: middle;
+}
+
 .vote-img {
   width: 60px;
   height: auto;
