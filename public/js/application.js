@@ -24,6 +24,6 @@ function updateVote(response, id) {
   if (response == "failure") {
     console.log("failed");
   } else {
-    $("#" + id + " .response-vote").html(response["voteTally"]);
+    $("#" + id + " > div > p .response-vote").html(response["voteTally"]);
   }
 }
