@@ -12,7 +12,7 @@
     <textarea name="body" placeholder="Enter your response here"></textarea>
     <input type="submit" value="Submit response">
   </form>
-  <form method="get" action="/posts/<%= @respondable.id %>">
+  <form method="get" action="/posts/<%= @respondable.post_id %>">
     <input type="submit" value="Cancel">
   </form>
   <% if @errors %>
