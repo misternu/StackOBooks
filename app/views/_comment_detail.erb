@@ -1,0 +1,8 @@
+<div>
+  <ul>
+    <li>ID: <%= response.id %> | <%= response.body %></li>
+    <% response.responses.each do |response| %>
+      <%= erb :"_comment_detail", locals: { response: response }%>
+    <% end %>
+  </ul>
+</div>

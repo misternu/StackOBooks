@@ -1,4 +1,7 @@
 class User < ActiveRecord::Base
+  has_many :posts
+  has_many :responses
+  has_many :votes
   validates :username, presence: true
   validate :password_requirements
 
