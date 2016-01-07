@@ -7,7 +7,6 @@ class Response < ActiveRecord::Base
   has_one :post, through: :favorite
 
   validates :body, presence: true
-  validates_length_of :body, minimum: 2, too_short: 'Please enter at least 2 characters.'
 
   def post_id
     return self.comment.id if self.comment.is_a?(Post)

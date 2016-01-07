@@ -5,29 +5,27 @@ end
 
 post '/posts/:post_id/responses' do
   @respondable = Post.find(params[:post_id])
-  response = Response.new(body: params[:body])
-  response.comment = @respondable #come back later if/when .comment == .respondable
+  response  = add_response(@respondable, params[:body]);
   if response.save
     redirect "/posts/#{params[:post_id]}"
   else
-    @errors = @user.errors.full_messages
+    @errors = response.errors.full_messages
     erb :'responses/new'
   end
 end
 
-# get '/responses/:response_id/responses/new' do
-#   @respondable = Response.find(params[:response_id])
-#   erb :'responses/new'
-# end
+get '/responses/:response_id/responses/new' do
+  @respondable = Response.find(params[:response_id])
+  erb :'responses/new'
+end
 
-# post '/responses/:responses_id/responses' do
-#   @respondable = Response.find(params[:response_id])
-#   response = Response.new(body: params[:body])
-#   response.comment = @respondable #come back later if/when .comment == .respondable
-#   if response.save
-#     redirect "/posts/#{@respondable}"
-#   else
-#     @errors = @user.errors.full_messages
-#     erb :'responses/new'
-#   end
-# end
+post '/responses/:response_id/responses' do
+  @respondable = Response.find(params[:response_id])
+  response = add_response(@respondable, params[:body])
+  if response.save
+    redirect "/posts/#{@respondable.post_id}"
+  else
+    @errors = response.errors.full_messages
+    erb :'responses/new'
+  end
+end
