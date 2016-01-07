@@ -1,7 +1,29 @@
 $(document).ready(function() {
-  // This is called after the document has loaded in its entirety
-  // This guarantees that any elements we bind to will exist on the page
-  // when we try to bind to them
 
-  // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
+  $(".vote-img").on("click", function(event) {
+    event.preventDefault();
+    $respId = $(this).parent().parent().parent().attr("id");
+    addVote($respId);
+  })
+
 });
+
+
+function addVote(voteId) {
+  $.ajax({
+    method: "Post",
+    url: "/posts/votes/new",
+    data: {response_id: voteId },
+    success: function(response) {
+     updateVote(response, voteId);
+    }
+  })
+}
+
+function updateVote(response, id) {
+  if (response == "failure") {
+    console.log("failed");
+  } else {
+    $("#" + id + " .response-vote").html(response["voteTally"]);
+  }
+}
