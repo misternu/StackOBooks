@@ -2,7 +2,7 @@ require 'faker'
 
 50.times do
   User.create( username: Faker::Internet.user_name,
-            hashed_password: "password")
+               password: "password")
 end
 
 20.times do
