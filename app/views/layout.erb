@@ -19,9 +19,15 @@
 </head>
 <body>
   <header>
-    <a href = "/users/new">Register</a>
-    <a href = "/login">Login</a>
-    <a href = "/posts/new">Create a post</a>
+    <a href="/">Home</a>
+    <% if session[:user_id] %>
+     <a href = "/posts/new">Create a post</a>
+     <a href = "/users/<%= session[:user_id] %>">Profile</a>
+     <a href = "/logout">Logout</a>
+    <% else %>
+      <a href = "/users/new">Register</a>
+      <a href = "/login">Login</a>
+    <% end %>
   </header>
   <%= yield %>
 </body>

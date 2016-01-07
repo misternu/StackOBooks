@@ -1,4 +1,4 @@
-get '/users' do
+ get '/users' do
   @user = User.all
   erb :'login'
 end
