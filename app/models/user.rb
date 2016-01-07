@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-
+  validates :username, presence: true
   validate :password_requirements
 
   def password
