@@ -1,0 +1,13 @@
+<div class="container">
+  <article>
+    <%= @respondable.title %>
+    <%= @respondable.body %>
+  </article>
+  <form method="post" action="/posts/<%= @respondable.id %>/responses">
+    <input type="text" name="body">
+    <input type="submit" value="Submit response">
+  </form>
+  <form method="get" action="/posts/<%= @respondable.id %>">
+    <input type="submit" value="Cancel">
+  </form>
+</div>
