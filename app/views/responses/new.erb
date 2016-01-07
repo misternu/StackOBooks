@@ -9,11 +9,8 @@
     <p><%= @respondable.body %></p>
   </article>
   <form method="post" action="/<%= route %>/<%= @respondable.id %>/responses">
-    <textarea name="body" placeholder="Enter your response here"></textarea>
+    <textarea name="body" placeholder="Enter your response here"></textarea><br>
     <input type="submit" value="Submit response">
-  </form>
-  <form method="get" action="/posts/<%= @respondable.post_id %>">
-    <input type="submit" value="Cancel">
   </form>
   <% if @errors %>
     <div class="errors-wrapper">

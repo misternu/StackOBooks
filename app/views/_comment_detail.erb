@@ -1,6 +1,6 @@
-<div>
+<div class="container">
   <ul>
-    <li>ID: <%= response.id %> | <a href=<%="/responses/#{response.id}/responses/new"%>><%= response.body %></a></li>
+    <li>ID: <%= response.id %> | <a href=<%="/responses/#{response.id}/responses/new"%> >Respond</a><%= response.body %></li>
     <% response.responses.each do |response| %>
       <%= erb :"_comment_detail", locals: { response: response }%>
     <% end %>
