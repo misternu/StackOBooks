@@ -1,10 +1,4 @@
-<!-- TEMPORARY CONTENT FOR TESTING -->
-
-<a href = "/users/new">Register</a>
-<a href = "/login">Login</a>
-<a href = "/posts/new">Create a post</a>
-
-<div>
+<div class="container">
   <ul>
     <% @posts.each do |post| %>
       <li><a href = <%="/posts/#{post.id}"%> ><%= post.title %></a>

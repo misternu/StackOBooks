@@ -1,6 +1,5 @@
 helpers do
   def add_response(respondable, response_body)
-
-    #post_id
+    respondable.responses.new(body: response_body)
   end
 end
