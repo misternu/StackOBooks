@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
-
+  has_many :posts
+  has_many :responses
+  has_many :votes
   validate :password_requirements
 
   def password
