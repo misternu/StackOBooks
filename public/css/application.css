@@ -23,7 +23,18 @@ h3 {
   display: inline;
 }
 
+.logo #thick {
+}
+
 #logo-container {
+  font-size: 28px;
+  font-family: 'Dosis', sans-serif;
+  font: ;
+}
+
+#thick {
+  font-weight:600;
+
 }
 
 
