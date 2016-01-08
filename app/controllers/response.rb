@@ -1,5 +1,6 @@
-# form to create a new response
+# form to create a new response on post
 get '/posts/:post_id/responses/new' do
+  @post = Post.find(params[:post_id])
   if session[:user_id]
     @respondable = Post.find(params[:post_id])
     erb :'responses/new'
@@ -8,7 +9,31 @@ get '/posts/:post_id/responses/new' do
   end
 end
 
-# create new response
+# form to create a new response on response
+get '/posts/:post_id/responses/:response_id/response/new' do
+  @post = Post.find(params[:post_id])
+  @respondable = Response.find(params[:response_id])
+  if session[:user_id]
+    # @respondable = Post.find(params[:post_id])
+    erb :'responses/new_on_resp'
+  else
+    erb :'/login'
+  end
+end
+
+# create new response on response
+post '/posts/:post_id/responses/:response_id/response' do
+  @new_response = Response.new(body: params[:body], user_id: session[:user_id], comment_id: params[:response_id], comment_type: "Response");
+  if @new_response.save
+    redirect "/posts/#{params[:post_id]}"
+  else
+    "errors"
+#     # @errors = response.errors.full_messages
+#     erb :"responses/new"
+  end
+end
+
+# create new response on post
 post '/posts/:post_id/responses' do
   # @respondable = Post.find(params[:post_id])
   response  = Response.new(body: params[:body], user_id: session[:user_id], comment_id: params[:post_id], comment_type: "Post");
