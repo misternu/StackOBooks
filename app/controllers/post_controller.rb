@@ -3,8 +3,13 @@ get '/posts' do
   erb :"posts/index"
 end
 
+# form to create new post
 get '/posts/new' do
-  erb :"posts/new"
+  if session[:user_id]
+    erb :"posts/new"
+  else
+    redirect '/login'
+  end
 end
 
 get '/posts/:id' do

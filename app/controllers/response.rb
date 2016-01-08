@@ -1,11 +1,17 @@
+# form to create a new response
 get '/posts/:post_id/responses/new' do
-  @respondable = Post.find(params[:post_id])
-  erb :'responses/new'
+  if session[:user_id]
+    @respondable = Post.find(params[:post_id])
+    erb :'responses/new'
+  else
+    erb :'/login'
+  end
 end
 
+# create new response
 post '/posts/:post_id/responses' do
-  @respondable = Post.find(params[:post_id])
-  response  = add_response(@respondable, params[:body]);
+  # @respondable = Post.find(params[:post_id])
+  response  = Response.new(body: params[:body], user_id: session[:user_id], comment_id: params[:post_id], comment_type: "Post");
   if response.save
     redirect "/posts/#{params[:post_id]}"
   else

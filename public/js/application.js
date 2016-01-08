@@ -1,5 +1,19 @@
 $(document).ready(function() {
 
+$(".post-response-button").on("click", function(event) {
+  event.preventDefault();
+  $postId = $("article > div").attr("id");
+  var $pathname = $postId + "/responses/new"
+  location.href=$pathname;
+})
+
+$(".response-button").on("click", function(event) {
+  event.preventDefault();
+  $respId = $(this).parent().parent().parent().attr("id")
+  $postId = $("article > div").attr("id");
+  goToResponse($respId, $postId);
+})
+
 // binding on favorite button
 $(".check-img").on("click", function(event) {
   event.preventDefault();
@@ -17,6 +31,27 @@ $(".check-img").on("click", function(event) {
   })
 
 });
+
+function goToPostResponse(id) {
+  $.ajax({
+    method: "GET",
+    url: "/posts/" + id + "/responses/new",
+    success: function(response) {
+      console.log("going")
+    },
+  })
+}
+
+function goToResponse(respId, postId) {
+  $.ajax({
+    method: "GET",
+    url: "/",
+    success: function(response){
+      console.log(response);
+    }
+  })
+}
+
 
 
 function postFavorite(responseId, postId) {
