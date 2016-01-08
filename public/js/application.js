@@ -1,17 +1,20 @@
 $(document).ready(function() {
 
+// binding for response on response
+$(".response-button").on("click", function(event) {
+  event.preventDefault();
+  // var $pathname = $postId + "/responses/new"
+  $responseId = $(this).parent().parent().parent().attr("id");
+  $postId = $("article > div").attr("id");
+  location.href = $postId + "/responses/" + $responseId + "/response/new";
+})
+
+// binding for response on post
 $(".post-response-button").on("click", function(event) {
   event.preventDefault();
   $postId = $("article > div").attr("id");
   var $pathname = $postId + "/responses/new"
   location.href=$pathname;
-})
-
-$(".response-button").on("click", function(event) {
-  event.preventDefault();
-  $respId = $(this).parent().parent().parent().attr("id")
-  $postId = $("article > div").attr("id");
-  goToResponse($respId, $postId);
 })
 
 // binding on favorite button
