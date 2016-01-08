@@ -43,5 +43,4 @@ post '/responses/:id/favorite/new' do
   else
     "fail"
   end
-
 end

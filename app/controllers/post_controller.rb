@@ -27,4 +27,13 @@ post '/posts' do
   end
 end
 
+get '/posts/:id/edit' do
+  @post = Post.find(params[:id])
+  erb :"posts/edit"
+end
+
+put '/posts/:id' do
+  Post.find(params[:id]).update(params[:post])
+  redirect "/posts/#{params[:id]}"
+end
 

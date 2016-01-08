@@ -1,19 +1,19 @@
 <article>
   <div id="<%= @post.id %>">
     <h3><%= @post.title %></h3>
+    <form action = "/posts/<%= @post.id %>/edit" method = "get">
+      <input type = "submit" value = "Edit">
+    </form>
     <p><%= @post.body %></p>
   </div>
 
   <div class="comment-section">
     <h4>Comments:</h4>
-      <button class="post-response-button">Add response</button>
-      <% if @post.responses.length > 0 %>
-
-        <% @post.responses.each do |response| %>
-          <%= erb :"_comment_detail", locals: { response: response }%>
-        <% end %>
-
+    <button class="post-response-button">Add response</button>
+    <% if @post.responses.length > 0 %>
+      <% @post.responses.each do |response| %>
+        <%= erb :"_comment_detail", locals: { response: response }%>
       <% end %>
+    <% end %>
   </div>
-
 </article>
