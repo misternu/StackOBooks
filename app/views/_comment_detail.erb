@@ -7,7 +7,7 @@
     <% end %>
     <%= response.body %>
   <div class="response-info">
-    <p><img src="/imgs/grn_arrow.png" class="vote-img">Votes: <span class="response-vote"><%= response.votes.count %></span> | Author: <span class="response-author"><%= response.user.username %></span> | Posted on: <span class="response-date"><%= response.updated_at.strftime('%B %e, %Y') %></span><button class="response-button">Respond</button>
+    <p><img src="/imgs/grn_arrow.png" class="vote-img">Votes: <span class="response-vote"><%= response.votes.count %></span> | Author: <span class="response-author"><%= response.user.username %></span> <% if response.user.id == session[:user_id] %>| <a href="/responses/<%= response.id %>/edit">Edit</a> <% end %>| Posted on: <span class="response-date"><%= response.updated_at.strftime('%B %e, %Y') %></span><button class="response-button">Respond</button>
     </p>
   </div>
 
