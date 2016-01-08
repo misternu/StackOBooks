@@ -1,4 +1,4 @@
-<ul>
+<ul class="comment-detail">
   <li class="response-body" id="<%= response.id %>">
     <% if response.favorite %>
       <img src="/imgs/check.png" class="check-img">
@@ -7,7 +7,9 @@
     <% end %>
     <%= response.body %>
   <div class="response-info">
-    <p><img src="/imgs/grn_arrow.png" class="vote-img">Votes: <span class="response-vote"><%= response.votes.count %></span> | Author: <span class="response-author"><%= response.user.username %></span> | Posted on: <span class="response-date"><%= response.updated_at.strftime('%B %e, %Y') %></span><button class="response-button">Respond</button>
+    <p><img src="/imgs/grn_arrow.png" class="vote-img">Votes: <span class="response-vote"><%= response.votes.count %></span> | Author: <span class="response-author"><%=  %></span> | Posted on: <span class="response-date"><%= response.updated_at.strftime('%B %e, %Y') %></span><button class="btn btn-secondary response-button">Respond</button>
+ <!--      <form action="/responses/<%= response.id %>/responses/new" method="get">
+      <input class="rt btn btn-secondary post-response-button" type="submit" value="Respond"> -->
     </p>
   </div>
 

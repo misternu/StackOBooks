@@ -1,5 +1,5 @@
 get '/login' do
-  erb :'/login'
+  erb :'/login', :layout => :'alt_layout'
 end
 
 post '/login' do

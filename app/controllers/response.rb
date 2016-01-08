@@ -2,15 +2,13 @@
 get '/posts/:post_id/responses/new' do
   if session[:user_id]
     @respondable = Post.find(params[:post_id])
-    erb :'responses/new'
+    erb :'responses/new', :layout => :'alt_layout'
   else
     erb :'/login'
   end
 end
 
-# create new response
 post '/posts/:post_id/responses' do
-  # @respondable = Post.find(params[:post_id])
   response  = Response.new(body: params[:body], user_id: session[:user_id], comment_id: params[:post_id], comment_type: "Post");
   if response.save
     redirect "/posts/#{params[:post_id]}"
@@ -22,7 +20,7 @@ end
 
 get '/responses/:response_id/responses/new' do
   @respondable = Response.find(params[:response_id])
-  erb :'responses/new'
+  erb :'responses/new', :layout => :'alt_layout'
 end
 
 post '/responses/:response_id/responses' do
@@ -43,5 +41,23 @@ post '/responses/:id/favorite/new' do
   else
     "fail"
   end
+end
 
+get '/responses/:id/edit' do
+  @foobar = Response.find(params[:id])
+  @respondable = @foobar.comment
+  erb :'responses/edit', :layout => :'alt_layout'
+end
+
+put '/responses/:id' do
+  response = Response.find(params[:id])
+  response.update(body: params[:body])
+  redirect "/posts/#{response.post_id}"
+end
+
+delete '/responses/:id' do
+  response = Response.find(params[:id])
+  its_post = response.post_id
+  response.destroy
+  redirect "/posts/#{its_post}"
 end

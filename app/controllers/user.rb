@@ -4,7 +4,7 @@
 end
 
 get '/users/new' do
-  erb :'users/new'
+  erb :'users/new', :layout => :'alt_layout'
 end
 
 post '/users' do
@@ -14,14 +14,14 @@ post '/users' do
     redirect :"/users/#{@user.id}"
   else
     @errors = @user.errors.full_messages
-    erb :'/users/new'
+    erb :'/users/new', :layout => :'alt_layout'
   end
 end
 
 get '/users/:id' do
   @user = User.find(params[:id])
   if session[:user_id] == @user.id
-    erb :'/users/show'
+    erb :'/users/show', :layout => :'alt_layout'
   else
     redirect :'/login'
   end

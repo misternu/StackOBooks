@@ -3,15 +3,16 @@ $(document).ready(function() {
 $(".post-response-button").on("click", function(event) {
   event.preventDefault();
   $postId = $("article > div").attr("id");
-  var $pathname = $postId + "/responses/new"
+  var $pathname = "/posts/" + $postId + "/responses/new"
   location.href=$pathname;
 })
 
 $(".response-button").on("click", function(event) {
   event.preventDefault();
-  $respId = $(this).parent().parent().parent().attr("id")
+  // var $pathname = $postId + "/responses/new"
+  $responseId = $(this).parent().parent().parent().attr("id");
   $postId = $("article > div").attr("id");
-  goToResponse($respId, $postId);
+  location.href = "/responses/" + $responseId + "/responses/new";
 })
 
 // binding on favorite button
