@@ -1,0 +1,8 @@
+<div>
+  <h3>Create a new response</h3>
+  <form method="POST" action="/posts/<%= @post.id %>/responses">
+    <label for="response_body"></label>
+    <textarea name="response_body"></textarea>
+    <input type="submit" value="Create new response">
+  </form>
+</div>
