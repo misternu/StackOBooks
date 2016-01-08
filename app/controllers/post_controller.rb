@@ -37,3 +37,8 @@ put '/posts/:id' do
   redirect "/posts/#{params[:id]}"
 end
 
+delete '/posts/:id' do
+  post = Post.find(params[:id])
+  post.destroy
+  redirect "/posts"
+end
