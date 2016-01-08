@@ -1,0 +1,24 @@
+<div class="container">
+
+  <article>
+    <p><em>Responding to response ID# <%= @respondable.id %> from <strong><%= @respondable.user.username %></strong></em></p>
+    <p><%= @respondable.body %></p>
+  </article>
+
+  <form method="post" action="/posts/<%= @post.id %>/responses/<%= @respondable.id %>/response">
+    <textarea name="body" placeholder="Enter your response here"></textarea><br>
+    <input type="submit" value="Submit response">
+  </form>
+
+  <% if @errors %>
+    <div class="errors-wrapper">
+      <span>Your entry could not be saved:</span>
+      <ul class="errors">
+        <% @errors.each do |error| %>
+          <li class="error"><%= error %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+</div>

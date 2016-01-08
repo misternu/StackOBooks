@@ -10,7 +10,13 @@
   </div>
 
   <div class="comment-section">
-    <button class="post-response-button">Add response</button>
+
+    <h4>Comments:</h4>
+
+    <% unless @post.user.id == session[:user_id] %>
+      <button class="post-response-button">Add response</button>
+    <% end %>
+
     <% if @post.responses.length > 0 %>
       <% @post.responses.each do |response| %>
         <%= erb :"_comment_detail", locals: { response: response }%>
