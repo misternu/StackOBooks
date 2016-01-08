@@ -1,3 +1,31 @@
+nav ul a,
+nav .brand-logo {
+  color: #444;
+}
+
+.button-collapse {
+  color: #444;
+}
+
+.comment-section li {
+  margin-left: 70px;
+}
+
+form,
+h3 {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+#logo-container img {
+  width: 43px;
+  height: 43px;
+  display: inline;
+}
+
+#logo-container {
+}
+
 
 textarea {
   width: 400px;

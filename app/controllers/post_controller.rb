@@ -29,6 +29,7 @@ end
 
 get '/posts/:id/edit' do
   @post = Post.find(params[:id])
+  redirect "/posts/#{params[:id]}" unless session[:user_id] == @post.user.id
   erb :"posts/edit"
 end
 

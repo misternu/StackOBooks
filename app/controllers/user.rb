@@ -20,6 +20,7 @@ end
 
 get '/users/:id' do
   @user = User.find(params[:id])
+  @posts = @user.posts
   if session[:user_id] == @user.id
     erb :'/users/show'
   else

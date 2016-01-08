@@ -1,34 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!--
-    normalize.css removes cross-browser differences in defaults, e.g.,
-    differences in how form elements appear between Firefox and IE
-    See: http://necolas.github.com/normalize.css/
-  -->
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
   <link rel="stylesheet" href="/css/normalize.css">
-  <!--
-    application.css is where you put your styles
-  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
   <link rel="stylesheet" href="/css/application.css">
 
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script src="/js/application.js"></script>
-
-  <title></title>
+  <title>StackO'Books</title>
 </head>
 <body>
-  <header>
-    <a href="/">Home</a>
-    <% if session[:user_id] %>
-     <a href = "/posts/new">Create a post</a>
-     <a href = "/users/<%= session[:user_id] %>">Profile</a>
-     <a href = "/logout">Logout</a>
-    <% else %>
-      <a href = "/users/new">Register</a>
-      <a href = "/login">Login</a>
-    <% end %>
-  </header>
+  <nav class="white ligh" role="navigation">
+    <div class="nav-wrapper container">
+      <a id="logo-container" href="/posts" class="brand-logo">
+      <img src='/books.jpg'>stackobooks
+      </a>
+      <ul class="right hide-on-med-and-down">
+        <%= erb :'_navbar'%>
+      </ul>
+
+      <ul id="nav-mobile" class="side-nav">
+        <%= erb :'_navbar' %>
+      </ul>
+      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+    </div>
+  </nav>
+
   <%= yield %>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+  <script src="/js/application.js"></script>
 </body>
 </html>

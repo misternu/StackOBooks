@@ -1,3 +1,11 @@
-<h1>User Show Page</h1>
+<div class="container">
+  <h4><%= @user.username %></h4>
 
-<a href="/logout">Logout</a>
+  <h5>Posts:</h5>
+  <%= erb :'posts/index' %>
+
+  <h5>Responses:</h5>
+  <% @user.responses.each do |response| %>
+  <a href="/posts/<%= response.post_id %>"><%= response.id %></a>
+  <% end %>
+</div>

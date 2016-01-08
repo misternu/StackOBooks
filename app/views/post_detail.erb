@@ -1,14 +1,15 @@
-<article>
+<article class="container">
   <div id="<%= @post.id %>">
     <h3><%= @post.title %></h3>
+    <% if session[:user_id] == @post.user.id %>
     <form action = "/posts/<%= @post.id %>/edit" method = "get">
       <input type = "submit" value = "Edit">
     </form>
+    <% end %>
     <p><%= @post.body %></p>
   </div>
 
   <div class="comment-section">
-    <h4>Comments:</h4>
     <button class="post-response-button">Add response</button>
     <% if @post.responses.length > 0 %>
       <% @post.responses.each do |response| %>

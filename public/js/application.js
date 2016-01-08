@@ -1,4 +1,7 @@
-$(document).ready(function() {
+$(function() {
+
+  $('.button-collapse').sideNav();
+
 
 $(".post-response-button").on("click", function(event) {
   event.preventDefault();
@@ -64,6 +67,8 @@ function postFavorite(responseId, postId) {
       // console.log(response);
     }
   })
+
+
 }
 
 function showFavorite(id) {

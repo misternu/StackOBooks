@@ -1,0 +1,9 @@
+  <li><a href="/">Home</a></li>
+<% if session[:user_id] %>
+  <li><a href = "/posts/new">Create a post</a></li>
+  <li><a href = "/users/<%= session[:user_id] %>">Profile</a></li>
+  <li><a href = "/logout">Logout</a></li>
+<% else %>
+  <li><a href = "/users/new">Register</a></li>
+  <li><a href = "/login">Login</a></li>
+<% end %>
