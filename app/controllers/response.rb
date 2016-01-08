@@ -23,14 +23,13 @@ end
 
 # create new response on response
 post '/posts/:post_id/responses/:response_id/response' do
-  @response = Response.find(params[:response_id])
   @new_response = Response.new(body: params[:body], user_id: session[:user_id], comment_id: params[:response_id], comment_type: "Response");
-  # @response.responses << new_response
   if @new_response.save
-    redirect "/posts"
+    redirect "/posts/#{params[:post_id]}"
   else
-    # @errors = response.errors.full_messages
-    erb :"responses/new"
+    "errors"
+#     # @errors = response.errors.full_messages
+#     erb :"responses/new"
   end
 end
 
