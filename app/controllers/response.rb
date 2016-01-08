@@ -44,3 +44,22 @@ post '/responses/:id/favorite/new' do
     "fail"
   end
 end
+
+get '/responses/:id/edit' do
+  @foobar = Response.find(params[:id])
+  @respondable = @foobar.comment
+  erb :'responses/edit'
+end
+
+put '/responses/:id' do
+  response = Response.find(params[:id])
+  response.update(body: params[:body])
+  redirect "/posts/#{response.post_id}"
+end
+
+delete '/responses/:id' do
+  response = Response.find(params[:id])
+  its_post = response.post_id
+  response.destroy
+  redirect "/posts/#{its_post}"
+end

@@ -1,0 +1,31 @@
+<div class="container">
+  <article>
+    <% if @respondable.is_a?(Post) %>
+      <h3><%= @respondable.title %></h3>
+      <% route = "posts" %>
+    <% else %>
+      <% route = "responses" %>
+    <% end %>
+    <p><%= @respondable.body %></p>
+  </article>
+  <form method="post" action="/responses/<%= @foobar.id %>">
+    <textarea name="body" placeholder="Enter your response here"><%= @foobar.body %></textarea><br>
+    <input type="hidden" name="_method" value="put">
+    <br>
+    <input type="submit" value="Submit response">
+  </form>
+  <form action = "/responses/<%= @foobar.id %>" method = "post">
+    <input type="hidden" name="_method" value="delete">
+    <input type = "submit" value = "Delete">
+  </form>
+  <% if @errors %>
+    <div class="errors-wrapper">
+      <span>Your entry could not be saved:</span>
+      <ul class="errors">
+        <% @errors.each do |error| %>
+          <li class="error"><%= error %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+</div>
